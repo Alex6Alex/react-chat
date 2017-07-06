@@ -1,11 +1,16 @@
+@import "./header.css" all;
+@import "./footer.css" all;
+
 body{
     font-family: 'Nunito';
+    width: 100%;
+    margin: 0;
 }
 
 h2{
     font-size: 18px;
     padding: 10px 20px;
-    color: #575ed8;
+    color: #286EB9;
 }
 
 #mario-chat{
@@ -46,7 +51,7 @@ h2{
 }
 
 #output strong{
-    color: #575ed8;
+    color: #286EB9;
 }
 
 label{
@@ -69,7 +74,7 @@ input{
 }
 
 button{
-    background: #575ed8;
+    background: #286EB9;
     color: #fff;
     font-size: 18px;
     border: 0;

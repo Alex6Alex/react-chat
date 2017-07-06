@@ -1,4 +1,7 @@
 import React from 'react'
+
+import Header from './components/Header'
+import Footer from './components/Footer'
 import Chat from './components/Chat'
 
 export default class Index extends React.Component {
@@ -13,7 +16,11 @@ export default class Index extends React.Component {
 					<link rel="stylesheet" type="text/css" href="./styles/styles.css"/>
 				</head>
 				<body>
-					<Chat/>
+					<Header/>
+					<content>
+						<Chat/>
+					</content>
+					<Footer/>
 					<script src="./client.min.js"></script>
 				</body>
 			</html>
