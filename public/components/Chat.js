@@ -1,7 +1,7 @@
 import React from 'react'
 import io from 'socket.io-client'
 
-export default class Home extends React.Component{
+export default class Chat extends React.Component{
 	constructor(){
 		super()
 		this.state = { messages: [], feedback: ''}
@@ -22,7 +22,9 @@ export default class Home extends React.Component{
 		})
 
 		this.socket.on('typing', (data) => {
-			data ? this.setState({ feedback: `${data} пишет сообщение...` }) :
+			if(data !== false)
+				this.setState({ feedback: `${data} пишет сообщение...` })
+			else
 				this.setState({ feedback: '' })
 		})
 	}
