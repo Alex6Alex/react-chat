@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Header extends React.Component{
 
@@ -7,10 +8,10 @@ export default class Header extends React.Component{
 			<header>
 				<div className="header-content">
 					<div className="title">
-						<h2>React-Chat</h2>
+						<h2><Link to='/'>React-Chat</Link></h2>
 					</div>
 					<div className="search">
-						<input type="text" placeholder="Поиск"/>
+						<input id="search_field" type="text" placeholder="Поиск"/>
 					</div>
 					<div className="signin">
 						<p>Вход</p>
