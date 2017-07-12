@@ -5,7 +5,7 @@ export default class Chat extends React.Component{
 	constructor(){
 		super()
 		this.state = { messages: [], feedback: ''}
-		
+
 		this.typing = false
 		this.timeout = undefined
 	}
@@ -38,10 +38,13 @@ export default class Chat extends React.Component{
 	sendClick(e){
 		const handle = document.getElementById('handle').value
 		const text = document.getElementById('message').value
+		const time = new Date(Date.now())
+
 		if(handle && text){
 			const message = {
-				text, 
-				handle
+				text,
+				handle,
+				time: time.toLocaleTimeString('ru-RU')
 			}
 			this.socket.emit('chat', message)
 			document.getElementById('message').value = ''
@@ -51,10 +54,14 @@ export default class Chat extends React.Component{
 	keyPressed(e){
 		const handle = document.getElementById('handle').value
 		const text = e.target.value
+		const time = new Date(Date.now())
+		time.toLocaleTimeString('ru-RU')
+
 		if (e.charCode === 13 && handle && message){
 			const message = {
-				text, 
-				handle
+				text,
+				handle,
+				time: time.toLocaleTimeString('ru-RU')
 			}
 			this.socket.emit('chat', message)
 			e.target.value = ''
@@ -73,8 +80,7 @@ export default class Chat extends React.Component{
 		const messages = this.state.messages.map((message, index) => {
 			return <div class='msg' key={index}>
 				<p>
-					<strong>{message.handle}: </strong>
-					
+					<strong>{message.handle}: </strong>{message.time}
 				</p>
 				<p>
 					{message.text}

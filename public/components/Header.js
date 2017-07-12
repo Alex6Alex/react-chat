@@ -8,7 +8,9 @@ export default class Header extends React.Component{
 			<header>
 				<div className="header-content">
 					<div className="title">
-						<h2><Link to='/'>React-Chat</Link></h2>
+						<Link to='/'>
+							<img src="../images/chat.png" className="logo"/>
+						</Link>
 					</div>
 					<div className="search">
 						<input id="search_field" type="text" placeholder="Поиск"/>
