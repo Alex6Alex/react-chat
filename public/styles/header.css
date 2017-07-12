@@ -46,11 +46,18 @@ header{
 }
 
 #search_field{
+	background-image: url("../images/search-icon.png");
+	background-repeat: no-repeat;
+	background-position: 4px;
+	background-size: 16px;
 	background-color: #A2BFDD;
+
 	width: 200px;
 	height: 30px;
 	border-radius: 7px;
 	border: 0;
+
+	padding-left: 30px;
 }
 
 #search_field:focus{
