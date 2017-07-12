@@ -1,16 +1,74 @@
+@import "./header.css" all;
+@import "./footer.css" all;
+
 body{
     font-family: 'Nunito';
+    width: 100%;
+    margin: 0;
 }
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#page_container{
+    width: 900px;
+    margin: 0 auto;
+    flex: 1 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+/*side bar*/
+
+#side-bar{
+    width: 150px;
+    margin-top: 70px;
+
+    height: 200px;
+}
+
+.list{
+    list-style: none;
+    padding: 0;
+}
+
+.list>a{
+    text-decoration: none;
+    color: black;
+}
+
+.list>a>li{
+    padding: 5px 7px 5px 7px;
+    font-size: 1.10em;
+}
+
+.list>a>li>.glyphicon{
+    margin-right: 5px;
+}
+
+.list>a>li:hover{
+    background-color: #A2BFDD;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*chat*/
 
 h2{
     font-size: 18px;
     padding: 10px 20px;
-    color: #575ed8;
+    color: #286EB9;
 }
 
 #mario-chat{
-    max-width: 600px;
-    margin: 30px auto;
+    width: 650px;
+    margin: 70px auto;
     border: 1px solid #ddd;
     box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
     border-radius: 2px;
@@ -46,7 +104,7 @@ h2{
 }
 
 #output strong{
-    color: #575ed8;
+    color: #286EB9;
 }
 
 label{
@@ -69,7 +127,7 @@ input{
 }
 
 button{
-    background: #575ed8;
+    background: #286EB9;
     color: #fff;
     font-size: 18px;
     border: 0;

@@ -30,8 +30,8 @@ export default class Chat extends React.Component{
 	}
 
 	timeoutFunction(){
-		this.typing = false
-		this.socket.emit('typing', false)
+		//this.typing = false
+		//this.socket.emit('typing', false)
 	}
 
 	//emit events
