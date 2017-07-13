@@ -7,6 +7,8 @@ import Chat from './components/Chat'
 
 export default class Index extends React.Component {
 	render(){
+		const signIn = false
+
 		return(
 			<html>
 				<head>

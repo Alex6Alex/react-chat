@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default class InfoBar extends React.Component{
 	render(){
 		return(
-			<div id="info-bar">
+			<div className="info-bar">
 				<ul className="list">
 					<Link to='/'><li><span className="glyphicon glyphicon-home"></span>
 					Аккаунт</li></Link>
