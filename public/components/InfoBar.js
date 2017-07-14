@@ -1,18 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import DatePicker from './DatePicker'
+
 export default class InfoBar extends React.Component{
 	render(){
 		return(
 			<div className="info-bar">
-				<ul className="list">
-					<Link to='/'><li><span className="glyphicon glyphicon-home"></span>
-					Аккаунт</li></Link>
-					<Link to='/chat'><li><span className="glyphicon glyphicon-comment"></span>
-					Чат-комната</li></Link>
-					<Link to='/side'><li><span className="glyphicon glyphicon-cog"></span>
-					Настройки</li></Link>
-				</ul>
+				<div className="info-bar-header">
+					<div className="user-info">
+						<img className="user-image" src="../images/no-photo.jpg"/>
+						<h4>User name</h4>
+					</div>
+					<span className="glyphicon glyphicon-menu-hamburger"></span>
+				</div>
+				<div className="info-bar-content">
+					<DatePicker/>
+				</div>
 			</div>
 		)
 	}
