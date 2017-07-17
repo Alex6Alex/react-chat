@@ -6,12 +6,18 @@ export default class SideBar extends React.Component{
 		super()
 	}
 
+	onShowHide(){
+		document.getElementById('sb').style.width = '5px';
+	}
+
 	render(){
 		return(
-			<div className="side-bar">
+			<div id="sb" className="side-bar">
 				<div className="side-bar-header">
 					<h1>Chat</h1>
-					<span className="glyphicon glyphicon-menu-hamburger"></span>
+					<span className="glyphicon glyphicon-menu-hamburger"
+						onClick={this.onShowHide.bind(this)}>
+					</span>
 				</div>
 				<div className="side-bar-content">
 					<h2>Меню</h2>

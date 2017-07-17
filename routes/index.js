@@ -19,7 +19,7 @@ const routes = [
 router.get('*', (req, res) => {
 
 	const match = routes.reduce((acc, route) => matchPath(req.url, {
-		path: route, 
+		path: route,
 		exact: true,
 		strict: false
 	}) || acc, null);
@@ -34,7 +34,7 @@ router.get('*', (req, res) => {
 			location={req.url}
 			context={context}
 		>
-			<Index/>
+			<Index />
 		</StaticRouter>
 	)
 

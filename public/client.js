@@ -10,7 +10,7 @@ const app = document.getElementById('app')
 
 ReactDOM.render(
 	<BrowserRouter>
-		<Index/>
+		<Index />
 	</BrowserRouter>,
 	document
 )

@@ -1,7 +1,5 @@
 body{
-  font-family: 'Geneva, Arial, Helvetica, sans-serif';
-  width: 100%;
-  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .wrapper{
@@ -10,12 +8,14 @@ body{
   background-size: cover;
   border-top: 2px solid grey;
 
+  min-height: 100vh;
+
   display: flex;
   flex-direction: row;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: stretch;
-  align-content: flex-start;
-  height: 100%;
+  align-content: stretch;
 }
 
 /*side bar*/
@@ -94,6 +94,7 @@ body{
             }
           }
           p{
+            margin-bottom: 0;
             @media screen and (max-width: 700px){
               display: none;
             }
@@ -136,6 +137,7 @@ body{
     .search{
       height: 30px;
       width: 250px;
+  //height: 100%;
       margin-left: 30px;
       border-radius: 7px;
       background-color: #F5F5F5;
@@ -214,30 +216,66 @@ body{
       }
     }
   }
+
+  .info-bar-content{
+    flex: 1 1 auto;
+    .smth{
+      height: 300px;
+      flex: 1 0 auto;
+    }
+  }
 }
 
 /*DatePicker*/
 .date-picker{
-  flex: 1 0 auto;
+  flex: 0 0 auto;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-content: stretch;
 
-  h2{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    color: #808080;
+  .date-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2{
+      margin-top: 5px;
+      margin-bottom: 5px;
+      color: #808080;
+    }
+    span{
+      margin-right: 20px;
+      color: #808080;
+      cursor: pointer;
+      &:hover{
+        color: white;
+      }
+    }
   }
 
   .date-header{
     flex: 1 1 auto;
+    margin-bottom: 10px;
+    color: #4F4F4F;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    .month-checker, .year-checker{
+      font-size: 1.1em;
+      .month, .year{
+        font-size: 1.2em;
+      }
+      .glyphicon:hover{
+        cursor: pointer;
+        color: white;
+      }
+    }
   }
 
   .date-content{
@@ -252,7 +290,7 @@ body{
           td{
             border: 1px solid grey;
             background-color: #363636;
-            &.weekend{
+            &.day5, &.day6{
               background-color: #4F4F4F;
             }
             &.today{
@@ -261,6 +299,15 @@ body{
           }
         }
       }
+    }
+  }
+
+  .short-date{
+    display: none;
+    h2{
+      color: #808080;
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
   }
 }

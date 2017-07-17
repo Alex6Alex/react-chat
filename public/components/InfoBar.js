@@ -15,7 +15,9 @@ export default class InfoBar extends React.Component{
 					<span className="glyphicon glyphicon-menu-hamburger"></span>
 				</div>
 				<div className="info-bar-content">
-					<DatePicker/>
+					<div className="smth">
+					</div>
+					<DatePicker />
 				</div>
 			</div>
 		)
