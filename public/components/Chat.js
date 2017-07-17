@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 export default class Chat extends React.Component{
 	constructor(){
 		super()
-		this.state = { messages: [], feedback: ''}
+		this.state = { messages: [], feedback: '', name: ''}
 
 		this.typing = false
 		this.timeout = undefined
@@ -13,6 +13,8 @@ export default class Chat extends React.Component{
 	//listen events
 	componentDidMount(){
 		this.socket = io('/')
+		const name = prompt('Введите имя')
+		this.setState({name: name})
 
 		this.socket.on('chat', (message) => {
 			this.setState({ messages: [
@@ -36,7 +38,7 @@ export default class Chat extends React.Component{
 
 	//emit events
 	sendClick(e){
-		const handle = document.getElementById('handle').value
+		const handle = this.state.name
 		const text = document.getElementById('message').value
 		const time = new Date(Date.now())
 
@@ -52,7 +54,7 @@ export default class Chat extends React.Component{
 	}
 
 	keyPressed(e){
-		const handle = document.getElementById('handle').value
+		const handle = this.state.name
 		const text = e.target.value
 		const time = new Date(Date.now())
 		time.toLocaleTimeString('ru-RU')
@@ -78,25 +80,49 @@ export default class Chat extends React.Component{
 
 	render(){
 		const messages = this.state.messages.map((message, index) => {
-			return <div class='msg' key={index}>
-				<p>
-					<strong>{message.handle}: </strong>{message.time}
-				</p>
-				<p>
-					{message.text}
-				</p>
-			</div>
+			if(message.handle === this.state.name){
+				return(
+					<div className='your message-block'>
+						<div className="message-info">
+							<img className="avatar" src="../images/no-photo.jpg"/>
+							<p className="time">{message.time}</p>
+						</div>
+						<div className="triangle left"></div>
+						<div className="message-content your_msg">
+							<p>{message.text}</p>
+						</div>
+					</div>
+				)
+			} else {
+				return(
+					<div className='companion message-block'>
+						<div className="message-info">
+							<img className="avatar" src="../images/no-photo.jpg"/>
+							<p className="time">{message.time}</p>
+						</div>
+						<div className="triangle right"></div>
+						<div className="message-content companion_msg">
+							<p>{message.text}</p>
+						</div>
+					</div>
+				)
+			}
 		})
 		const feedback = <p><em>{this.state.feedback}</em></p>
 		return(
-			<div id="mario-chat">
-				<div id="chat-window">
-					<div id="output">{messages}</div>
-					<div id="feedback"></div>
+			<div id="mario-chat" className="chat">
+				<div id="chat-window" className="chat-window">
+					<div id="output" className="message-field">
+						{messages}
+					</div>
+					<div id="feedback" className="feedback"></div>
 				</div>
-				<input id="handle" type="text" placeholder="Имя"/>
-				<input id="message" onKeyPress={this.keyPressed.bind(this)} type="text" placeholder="Сообщение"/>
-				<button id="send" onClick={this.sendClick.bind(this)}>Отправить</button>
+				<div className="typing-field">
+					<input id="message" className="message-input"
+						placeholder="Ваше cообщение" onKeyPress={this.keyPressed.bind(this)}/>
+					<img src="../images/send.png" id="send" className="send-btn"
+						onClick={this.sendClick.bind(this)}/>
+				</div>
 			</div>
 		)
 	}
