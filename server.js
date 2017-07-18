@@ -6,7 +6,10 @@ import express from 'express'
 import socket from 'socket.io'
 import favicon from 'serve-favicon'
 import path from 'path'
+
 const sassMiddleware = require('node-sass-middleware')
+const srcPath = path.join(__dirname, 'sass')
+const destPath = path.join(__dirname, 'public')
 
 //app setup
 const app = express()
@@ -16,8 +19,6 @@ const server = app.listen(port, () => {
 })
 
 //for sass
-const srcPath = path.join(__dirname, 'sass')
-const destPath = path.join(__dirname, 'public')
 app.use(sassMiddleware({
     src: srcPath,
     dest: destPath,

@@ -7,7 +7,13 @@ module.exports = {
   devtool: debug ? "inline-sourcemap" : false,
   entry: "./client.js",
   module: {
-    loaders: [
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.js?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'eslint-loader',
+      },
       {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,

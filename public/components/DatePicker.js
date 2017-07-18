@@ -63,7 +63,7 @@ export default class DatePicker extends React.Component {
       }
 
       table.push(
-        <tr className="dates" key={i}>
+        <tr className='dates' key={i}>
           {tableRow}
         </tr>
       )
@@ -87,38 +87,38 @@ export default class DatePicker extends React.Component {
     const today = new Date()
 
     return(
-      <div className="date-picker">
-        <div className="date-title">
+      <div className='date-picker'>
+        <div className='date-title'>
           <h2>Календарь</h2>
-          <span className="glyphicon glyphicon-chevron-down"
+          <span className='glyphicon glyphicon-chevron-down'
             onClick={this.hidePicker.bind(this)}>
           </span>
         </div>
-        <div className="date-header">
-          <div className="month-checker">
-            <span className="glyphicon glyphicon-chevron-left"
+        <div className='date-header'>
+          <div className='month-checker'>
+            <span className='glyphicon glyphicon-chevron-left'
               onClick={this.changeDate.bind(this, -1, 0)}>
             </span>
-            <span className="month">
+            <span className='month'>
               {month}
             </span>
-            <span className="glyphicon glyphicon-chevron-right"
+            <span className='glyphicon glyphicon-chevron-right'
               onClick={this.changeDate.bind(this, 1, 0)}>
             </span>
           </div>
-          <div className="year-checker">
-            <span className="glyphicon glyphicon-chevron-left"
+          <div className='year-checker'>
+            <span className='glyphicon glyphicon-chevron-left'
               onClick={this.changeDate.bind(this, 0, -1)}>
             </span>
-            <span className="year">
+            <span className='year'>
               {year}
             </span>
-            <span className="glyphicon glyphicon-chevron-right"
+            <span className='glyphicon glyphicon-chevron-right'
               onClick={this.changeDate.bind(this, 0, 1)}>
             </span>
           </div>
         </div>
-        <div className="date-content">
+        <div className='date-content'>
           <table>
             <tbody>
               { this.setDays() }
@@ -126,7 +126,7 @@ export default class DatePicker extends React.Component {
             </tbody>
           </table>
         </div>
-        <div className="short-date">
+        <div className='short-date'>
           <h2>{today.getDate()} {this.state.months[today.getMonth()]}
           {today.getFullYear()}</h2>
         </div>
