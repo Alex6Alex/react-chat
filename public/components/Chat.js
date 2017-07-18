@@ -4,17 +4,18 @@ import io from 'socket.io-client'
 export default class Chat extends React.Component{
 	constructor(){
 		super()
-		this.state = { messages: [], feedback: '', name: ''}
+		this.state = { messages: [], feedback: '', name: '' }
 
 		this.typing = false
 		this.timeout = undefined
+		this.name = ''
 	}
 
 	//listen events
-	componentDidMount(){
-		this.socket = io('/')
-		const name = prompt('Введите имя')
+	componentDidMount() {
+		const name = window.prompt('Введите имя')
 		this.setState({name: name})
+		this.socket = io('/')
 
 		this.socket.on('chat', (message) => {
 			this.setState({ messages: [
@@ -29,6 +30,10 @@ export default class Chat extends React.Component{
 			else
 				this.setState({ feedback: '' })
 		})
+	}
+
+	componentWillUnmount(){
+		this.setState({messages: []})
 	}
 
 	timeoutFunction(){
@@ -82,7 +87,7 @@ export default class Chat extends React.Component{
 		const messages = this.state.messages.map((message, index) => {
 			if(message.handle === this.state.name){
 				return(
-					<div className='your message-block'>
+					<div className='your message-block' key={index}>
 						<div className="message-info">
 							<img className="avatar" src="../images/no-photo.jpg"/>
 							<p className="time">{message.time}</p>
@@ -95,7 +100,7 @@ export default class Chat extends React.Component{
 				)
 			} else {
 				return(
-					<div className='companion message-block'>
+					<div className='companion message-block' key={index}>
 						<div className="message-info">
 							<img className="avatar" src="../images/no-photo.jpg"/>
 							<p className="time">{message.time}</p>
