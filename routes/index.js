@@ -12,7 +12,7 @@ const router = Router()
 
 const routes = [
 	'/',
-	'/chat',
+	'/messages',
 	'/side'
 ]
 

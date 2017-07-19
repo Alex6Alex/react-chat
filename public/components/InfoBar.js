@@ -16,7 +16,7 @@ export default class InfoBar extends React.Component{
 					<span className='glyphicon glyphicon-menu-hamburger'></span>
 				</div>
 				<div className='info-bar-content'>
-					<Route path='/chat' component={Companion}/>
+					<Route path='/messages' component={Companion}/>
 					<DatePicker />
 				</div>
 			</div>

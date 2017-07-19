@@ -40,10 +40,13 @@ body{
     align-items: center;
     align-content: flex-start;
 
-    h1{
-      color: white;
-      margin-top: 0;
-      margin-bottom: 0;
+    a {
+      text-decoration: none;
+      h1{
+        color: white;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
       @media screen and (max-width: 700px){
         display: none;
       }
@@ -170,6 +173,83 @@ body{
   }
 }
 
+.profile {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  .user-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    background-color: snow;
+    border: 1px solid #C0C0C0;
+    border-radius: 3px;
+
+    .user-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .user-name {
+        color: black;
+      }
+      .email, .phone {
+        display: flex;
+        flex-wrap: wrap;
+        strong {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .params {
+      color: blue;
+      font-size: 1.1em;
+    }
+  }
+
+  .current-companions {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+    background-color: snow;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+
+    h2 {
+      color: black;
+    }
+
+    .contact {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .contact-photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+
+
+      }
+    }
+  }
+}
+
 /*info-bar*/
 .info-bar {
   background: rgba(10, 15, 13, .97);
@@ -226,11 +306,10 @@ body{
   }
 
   .info-bar-content{
-    flex: 1 1 auto;
-    .smth{
-      height: 300px;
-      flex: 1 0 auto;
-    }
+    display: flex;
+    flex-direction: column;
+
+    flex: 1 0 auto;
   }
 }
 
@@ -417,6 +496,7 @@ h2 {
 
           p{
             margin: 0;
+            word-wrap: break-word;
           }
         }
       }
@@ -433,19 +513,18 @@ h2 {
 
   .typing-field {
     flex: 0 0 auto;
-    padding: 10px 20px 10px;
-    background-color: #C0C0C0;
+    padding: 15px 0px 15px 20px;
+    background-color: white;
+    border-top: 1px solid #C0C0C0;
 
     display: flex;
-    justify-content: space-between;
-    position: relative;
+    align-items: flex-start;
 
     .message-input {
       width: 100%;
-      padding: 10px 20px;
-      padding-right: 50px;
       border: 0;
-      border-radius: 15px;
+      padding-bottom: 5px;
+      resize: none;
 
       &:focus {
         outline: none;
@@ -453,20 +532,20 @@ h2 {
     }
 
     .send-btn {
+      margin-left: 20px;
+      margin-right: 20px;
       width: 30px;
       height: 30px;
       cursor: pointer;
       background-color: white;
-
-      position: absolute;
-      top: 20%;
-      left: 94%;
     }
   }
 }
 
 /*companion-info*/
 .companion {
+  flex: 1 0 auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;

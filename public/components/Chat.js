@@ -1,5 +1,6 @@
 import React from 'react'
 import io from 'socket.io-client'
+import autosize from 'autosize'
 
 export default class Chat extends React.Component{
 	constructor(){
@@ -14,6 +15,7 @@ export default class Chat extends React.Component{
 	//listen events
 	componentDidMount() {
 		//const name = window.prompt('Введите имя')
+		autosize(document.querySelector('textarea'))
 		this.setState({name: 'name'})
 		this.socket = io('/')
 
@@ -123,8 +125,9 @@ export default class Chat extends React.Component{
 					<div id='feedback' className='feedback'></div>
 				</div>
 				<div className='typing-field'>
-					<input id='message' className='message-input'
-						placeholder='Ваше cообщение' onKeyPress={this.keyPressed.bind(this)}/>
+					<textarea rows='1' id='message' className='message-input'
+						placeholder='Ваше cообщение' onKeyPress={this.keyPressed.bind(this)}>
+					</textarea>
 					<img src='../images/send.png' id='send' className='send-btn'
 						onClick={this.sendClick.bind(this)}/>
 				</div>

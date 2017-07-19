@@ -13,7 +13,7 @@ export default class SideBar extends React.Component{
 		return(
 			<div className='side-bar'>
 				<div className='side-bar-header'>
-					<h1 id='name'>Chat</h1>
+					<Link to='/'><h1 id='name'>Chat</h1></Link>
 					<span className='glyphicon glyphicon-menu-hamburger'
 						onClick={this.onShowHide.bind(this)}>
 					</span>
@@ -23,8 +23,8 @@ export default class SideBar extends React.Component{
 					<ul className='list'>
 						<Link to='/'><li><img className='link-img home' src='../images/home.png'/>
 						<p id='to_acc'>Аккаунт</p></li></Link>
-						<Link to='/chat'><li><img className='link-img comment' src='../images/chat.png'/>
-						<p id='to_chat'>Чат-комната</p></li></Link>
+						<Link to='/messages'><li><img className='link-img comment' src='../images/chat.png'/>
+						<p id='to_chat'>Сообщения</p></li></Link>
 						<Link to='/side'><li><img className='link-img cog' src='../images/cogs.png'/>
 						<p id='to_params'>Настройки</p></li></Link>
 					</ul>
