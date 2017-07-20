@@ -176,12 +176,16 @@ body{
 .profile {
   width: 100%;
   margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
 
   .user-information {
+    flex: 1 0 auto;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -221,7 +225,7 @@ body{
     }
   }
 
-  .current-companions {
+  .profile-content {
     display: flex;
     flex-direction: column;
 
@@ -230,21 +234,62 @@ body{
     border: 1px solid #c0c0c0;
     border-radius: 3px;
 
-    h2 {
-      color: black;
+    .prefers {
+      h2{
+        margin: 0;
+        color: black;
+      }
+
+      .prefers-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .hobbies, .movies, .music, .books {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+
+          .title {
+            font-size: 1.1em;
+          }
+
+          div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            p {
+              background-color: white;
+              border: 1px solid #c0c0c0;
+              border-radius: 10px;
+              margin-right: 10px;
+              padding: 5px;
+            }
+          }
+        }
+      }
     }
 
-    .contact {
+    .current-companions {
       display: flex;
-      justify-content: space-around;
-      align-items: center;
+      flex-direction: column;
 
-      .contact-photo {
-        width: 60px;
-        height: 60px;
-        border-radius: 30px;
+      h2 {
+        margin: 0;
+        color: black;
+      }
 
+      .contact {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
 
+        .contact-photo {
+          width: 60px;
+          height: 60px;
+          border-radius: 30px;
+        }
       }
     }
   }
