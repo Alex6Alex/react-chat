@@ -5,8 +5,6 @@ import ReactDOMServer from 'react-dom/server'
 import ReactRouter from 'react-router'
 import { Route, Switch, StaticRouter, matchPath } from 'react-router'
 
-import Chat from '../public/components/Chat'
-
 const Index = require('../public/index.js').default
 const router = Router()
 
@@ -49,4 +47,4 @@ router.get('*', (req, res) => {
 	}
 })
 
-export default router
+module.exports = router

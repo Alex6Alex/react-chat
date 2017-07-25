@@ -6,7 +6,6 @@ import express from 'express'
 import socket from 'socket.io'
 import favicon from 'serve-favicon'
 import path from 'path'
-import routes from './routes/index.js'
 
 const sassMiddleware = require('node-sass-middleware')
 const srcPath = path.join(__dirname, 'sass')
@@ -29,7 +28,7 @@ app.use(sassMiddleware({
 
 //static files
 app.use(express.static('public'))
-app.use(router)
+app.use(require('./routes/index.js'))
 //favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 

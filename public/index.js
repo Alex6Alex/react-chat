@@ -1,8 +1,8 @@
 import React from 'react'
 
-import SideBar from './components/SideBar'
-import InfoBar from './components/InfoBar'
-import PageContainer from './components/PageContainer'
+import SideBar from './components/LeftBar/SideBar'
+import InfoBar from './components/RightBar/InfoBar'
+import PageContainer from './components/Content/PageContainer'
 
 export default class Index extends React.Component {
 	render(){
