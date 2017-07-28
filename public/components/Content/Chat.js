@@ -14,9 +14,11 @@ export default class Chat extends React.Component{
 
 	//listen events
 	componentDidMount() {
-		//const name = window.prompt('Введите имя')
+		const name = window.prompt('Введите имя')
+		this.setState({name: name})
+
 		autosize(document.querySelector('textarea'))
-		this.setState({name: 'name'})
+
 		this.socket = io('/')
 
 		this.socket.on('chat', (message) => {
@@ -85,35 +87,37 @@ export default class Chat extends React.Component{
 		}
 	}
 
+	messageRender() {
+
+	}
+
 	render() {
 		const messages = this.state.messages.map((message, index) => {
-			if(message.handle === this.state.name){
-				return(
-					<div className='your message-block' key={index}>
-						<div className='message-info'>
-							<img className='avatar' src='../../images/no-photo.jpg'/>
-							<p className='time'>{message.time}</p>
-						</div>
+			const whoseMessage = message.handle === this.state.name ?
+				'your message-block' : 'companion message-block'
+				
+			return(
+				<div className={whoseMessage} key={index}>
+					<div className='message-info'>
+						<img className='avatar' src='../../images/no-photo.jpg'/>
+						<p className='time'>{message.time}</p>
+					</div>
+					{ message.handle === this.state.name ? (
 						<div className='triangle left'></div>
+					) : (
+						<div className='triangle right'></div>
+					) }
+					{ message.handle === this.state.name ? (
 						<div className='message-content your_msg'>
 							<p>{message.text}</p>
 						</div>
-					</div>
-				)
-			} else {
-				return(
-					<div className='companion message-block' key={index}>
-						<div className='message-info'>
-							<img className='avatar' src='../../images/no-photo.jpg'/>
-							<p className='time'>{message.time}</p>
-						</div>
-						<div className='triangle right'></div>
+					) : (
 						<div className='message-content companion_msg'>
 							<p>{message.text}</p>
 						</div>
-					</div>
-				)
-			}
+					) }
+				</div>
+			)
 		})
 
 		return(

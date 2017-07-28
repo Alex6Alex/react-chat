@@ -479,14 +479,18 @@ h2 {
     }
 
     .message-field {
+
       .message-block {
         display: flex;
         margin-top: 10px;
         margin-bottom: 10px;
+        justify-content: flex-start;
+        align-items: flex-start;
 
         position: relative;
         &.companion {
           padding-right: 20%;
+          flex-direction: row;
         }
         &.your {
           padding-left: 20%;
@@ -518,13 +522,13 @@ h2 {
           border: 7px solid transparent;
           &.right {
             border-right: 7px solid white;
+            top: 17;
           }
           &.left {
             border-left: 7px solid #E6E6FA;
+            top: 17;
           }
           position: relative;
-
-          top: 17;
         }
 
         .message-content {
