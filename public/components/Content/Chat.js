@@ -6,17 +6,17 @@ export default class Chat extends React.Component{
 	constructor(){
 		super()
 		this.state = { messages: [], feedback: '', name: '' }
-
-		this.typing = false
-		this.timeout = undefined
 		this.name = ''
+
+		this.timeout = 0
 	}
 
 	//listen events
 	componentDidMount() {
 		const name = window.prompt('Введите имя')
-		this.setState({name: name})
+		this.typing = false
 
+		this.setState({name: name})
 		autosize(document.querySelector('textarea'))
 
 		this.socket = io('/')
@@ -29,10 +29,11 @@ export default class Chat extends React.Component{
 		})
 
 		this.socket.on('typing', (data) => {
-			if(data !== false)
+			if(data !== false){
 				this.setState({ feedback: `${data} пишет сообщение...` })
-			else
+			} else {
 				this.setState({ feedback: '' })
+			}
 		})
 	}
 
@@ -41,8 +42,8 @@ export default class Chat extends React.Component{
 	}
 
 	timeoutFunction(){
-		//this.typing = false
-		//this.socket.emit('typing', false)
+		this.typing = false
+		this.socket.emit('typing', false)
 	}
 
 	//emit events
@@ -69,6 +70,8 @@ export default class Chat extends React.Component{
 		time.toLocaleTimeString('ru-RU')
 
 		if (e.charCode === 13 && handle && text){
+			e.preventDefault()
+
 			const message = {
 				text,
 				handle,
@@ -78,24 +81,23 @@ export default class Chat extends React.Component{
 			e.target.value = ''
 			return false
 		}
+
 		if(this.typing === false){
 			this.typing = true
 			this.socket.emit('typing', handle)
 		} else {
 			clearTimeout(this.timeout)
-			this.timeout = setTimeout(this.timeoutFunction, 2000);
+			this.timeout = setTimeout(this.timeoutFunction, 2000)
 		}
 	}
 
-	messageRender() {
-
-	}
-
 	render() {
+		const feedback = this.state.feedback
+
 		const messages = this.state.messages.map((message, index) => {
 			const whoseMessage = message.handle === this.state.name ?
 				'your message-block' : 'companion message-block'
-				
+
 			return(
 				<div className={whoseMessage} key={index}>
 					<div className='message-info'>
@@ -126,7 +128,8 @@ export default class Chat extends React.Component{
 					<div id='output' className='message-field'>
 						{messages}
 					</div>
-					<div id='feedback' className='feedback'></div>
+					<div id='feedback' className='feedback'>
+					</div>
 				</div>
 				<div className='typing-field'>
 					<textarea rows='1' id='message' className='message-input'
