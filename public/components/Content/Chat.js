@@ -92,7 +92,7 @@ export default class Chat extends React.Component{
 	}
 
 	render() {
-		const feedback = this.state.feedback
+		//const feedback = this.state.feedback
 
 		const messages = this.state.messages.map((message, index) => {
 			const whoseMessage = message.handle === this.state.name ?
