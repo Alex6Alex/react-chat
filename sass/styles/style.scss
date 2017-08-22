@@ -11,7 +11,7 @@ body{
   min-height: 100vh;
 
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 6fr 1fr;
   grid-template-areas:
     "left-bar main rigth-bar";
 }
@@ -52,10 +52,13 @@ body{
 
     span{
       grid-column: 2 / 3;
-      justify-self: center;
 
       color: white;
       font-size: 1.5em;
+    }
+
+    @media screen and (max-width: 700px){
+      grid-template-columns: auto;
     }
   }
 
@@ -179,8 +182,6 @@ body{
   grid-column-gap: 20px;
 
   .user-information {
-    flex: 1 0 auto;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -356,16 +357,19 @@ body{
 /*DatePicker*/
 .date-picker{
   grid-row: 3 / 4;
-  margin-left: 1px;
-  margin-right: 1px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "date-title"
+    "date-header"
+    "date-content";
+  justify-items: center;
   align-items: center;
-  align-content: stretch;
 
   .date-title{
+    grid-area: date-title;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -386,19 +390,28 @@ body{
   }
 
   .date-header{
-    flex: 1 1 auto;
+    grid-area: date-header;
     margin-bottom: 10px;
     color: #4F4F4F;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
 
     .month-checker, .year-checker{
+      display: grid;
+      &.month-checker {
+        grid-template-columns: 1fr 75px 1fr;
+      }
+      &.year-checker {
+        grid-template-columns: 1fr 40px 1fr;
+      }
+      justify-items: center;
+      align-items: center;
+
       font-size: 1.1em;
       .month, .year{
-        font-size: 1.2em;
+        font-size: 1.15em;
       }
       .glyphicon:hover{
         cursor: pointer;
@@ -586,18 +599,15 @@ h2 {
 
 /*companion-info*/
 .companion {
-  flex: 1 0 auto;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
 
   h2 {
     margin-top: 5px;
     margin-bottom: 5px;
     color: #808080;
-    align-self: flex-start;
+    justify-self: flex-start;
   }
 
   .companion-avatar {
@@ -607,10 +617,9 @@ h2 {
   }
 
   .companion-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
 
     .companion-name {
       font-size: 1.4em;

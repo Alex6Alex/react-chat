@@ -49,7 +49,7 @@ export default class Chat extends React.Component{
 	//emit events
 	sendClick(){
 		const handle = this.state.name
-		const text = document.getElementById('message').value
+		const text = document.getElementById('message').value.trim()
 		const time = new Date(Date.now())
 
 		if(handle && text){
@@ -65,7 +65,7 @@ export default class Chat extends React.Component{
 
 	keyPressed(e) {
 		const handle = this.state.name
-		const text = e.target.value
+		const text = e.target.value.trim()
 		const time = new Date(Date.now())
 		time.toLocaleTimeString('ru-RU')
 
