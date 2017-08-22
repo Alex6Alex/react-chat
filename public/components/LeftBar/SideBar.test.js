@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import SideBar from './SideBar'
 
-describe('SideBar component', () => {
+describe('SideBar компонент', () => {
   const component = shallow(<SideBar />)
 
   it('компонент', () => {
