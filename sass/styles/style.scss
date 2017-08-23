@@ -355,20 +355,103 @@ body{
 }
 
 /*DatePicker*/
-.date-picker{
+.date-wrapper{
   grid-row: 3 / 4;
+  align-self: end;
 
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "date-title"
-    "date-header"
-    "date-content";
-  justify-items: center;
-  align-items: center;
 
-  .date-title{
+  .date-picker{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "date-title"
+      "date-header"
+      "date-content";
+    justify-items: center;
+    align-items: center;
+
+    .date-title, .short-date{
+      grid-area: date-title;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h2{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #808080;
+      }
+      span{
+        margin-right: 20px;
+        color: #808080;
+        cursor: pointer;
+        &:hover{
+          color: white;
+        }
+      }
+    }
+
+    .date-header{
+      grid-area: date-header;
+      margin-bottom: 10px;
+      color: #4F4F4F;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+
+      .month-checker, .year-checker{
+        display: grid;
+        &.month-checker {
+          grid-template-columns: 1fr 75px 1fr;
+        }
+        &.year-checker {
+          grid-template-columns: 1fr 40px 1fr;
+        }
+        justify-items: center;
+        align-items: center;
+
+        font-size: 1.1em;
+        .month, .year{
+          font-size: 1.15em;
+        }
+        .glyphicon:hover{
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+
+    .date-content{
+      margin-bottom: 20px;
+
+      table{
+        color: white;
+        tr{
+          td{
+            padding: 3px;
+            text-align: center;
+          }
+          &.dates{
+            td{
+              border: 1px solid grey;
+              background-color: #363636;
+              &.day5, &.day6{
+                background-color: #4F4F4F;
+              }
+              &.today{
+                background-color: #1C1C1C;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .short-date{
     grid-area: date-title;
     width: 100%;
     display: flex;
@@ -386,70 +469,6 @@ body{
       &:hover{
         color: white;
       }
-    }
-  }
-
-  .date-header{
-    grid-area: date-header;
-    margin-bottom: 10px;
-    color: #4F4F4F;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-
-    .month-checker, .year-checker{
-      display: grid;
-      &.month-checker {
-        grid-template-columns: 1fr 75px 1fr;
-      }
-      &.year-checker {
-        grid-template-columns: 1fr 40px 1fr;
-      }
-      justify-items: center;
-      align-items: center;
-
-      font-size: 1.1em;
-      .month, .year{
-        font-size: 1.15em;
-      }
-      .glyphicon:hover{
-        cursor: pointer;
-        color: white;
-      }
-    }
-  }
-
-  .date-content{
-    table{
-      color: white;
-      tr{
-        td{
-          padding: 3px;
-          text-align: center;
-        }
-        &.dates{
-          td{
-            border: 1px solid grey;
-            background-color: #363636;
-            &.day5, &.day6{
-              background-color: #4F4F4F;
-            }
-            &.today{
-              background-color: #1C1C1C;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .short-date{
-    display: none;
-    h2{
-      color: #808080;
-      margin-top: 5px;
-      margin-bottom: 5px;
     }
   }
 }

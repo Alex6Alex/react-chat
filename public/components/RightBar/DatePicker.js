@@ -12,7 +12,9 @@ export default class DatePicker extends React.Component {
 
     this.state = {
       date,
-      months
+      months,
+      active: true,
+      options: { year: '2-digit', month: 'long', day: 'numeric' }
     }
   }
 
@@ -75,10 +77,8 @@ export default class DatePicker extends React.Component {
   }
 
   hidePicker(){
-    document.getElementsByClassName('date-header')[0].style.display = 'none'
-    document.getElementsByClassName('date-content')[0].style.display = 'none'
-    document.getElementsByClassName('date-title')[0].style.display = 'none'
-    document.getElementsByClassName('short-date')[0].style.display = 'flex'
+    const _active = this.state.active
+    this.setState({active: !_active})
   }
 
   render(){
@@ -87,49 +87,58 @@ export default class DatePicker extends React.Component {
     const today = new Date()
 
     return(
-      <div className='date-picker'>
-        <div className='date-title'>
-          <h2>Календарь</h2>
-          <span className='glyphicon glyphicon-chevron-down'
-            onClick={this.hidePicker.bind(this)}>
-          </span>
-        </div>
-        <div className='date-header'>
-          <div className='month-checker'>
-            <span className='glyphicon glyphicon-chevron-left'
-              onClick={this.changeDate.bind(this, -1, 0)}>
-            </span>
-            <span className='month'>
-              {month}
-            </span>
-            <span className='glyphicon glyphicon-chevron-right'
-              onClick={this.changeDate.bind(this, 1, 0)}>
+      <div className='date-wrapper'>
+        {this.state.active ? (
+          <div className='date-picker'>
+            <div className='date-title'>
+              <h2>Календарь</h2>
+              <span id='hide-picker' className='glyphicon glyphicon-chevron-down'
+                onClick={this.hidePicker.bind(this)}>
+              </span>
+            </div>
+            <div className='date-header'>
+              <div className='month-checker'>
+                <span id='month-left' className='glyphicon glyphicon-chevron-left'
+                  onClick={this.changeDate.bind(this, -1, 0)}>
+                </span>
+                <span className='month'>
+                  {month}
+                </span>
+                <span id='month-right' className='glyphicon glyphicon-chevron-right'
+                  onClick={this.changeDate.bind(this, 1, 0)}>
+                </span>
+              </div>
+              <div className='year-checker'>
+                <span id='year-left' className='glyphicon glyphicon-chevron-left'
+                  onClick={this.changeDate.bind(this, 0, -1)}>
+                </span>
+                <span className='year'>
+                  {year}
+                </span>
+                <span id='year-right' className='glyphicon glyphicon-chevron-right'
+                  onClick={this.changeDate.bind(this, 0, 1)}>
+                </span>
+              </div>
+            </div>
+            <div className='date-content'>
+              <table>
+                <tbody>
+                  { this.setDays() }
+                  { this.setDates() }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : (
+          <div className='short-date'>
+            <h2>
+              {today.toLocaleDateString('ru-RU', this.state.options)}
+            </h2>
+            <span id='show-picker' className='glyphicon glyphicon-chevron-up'
+              onClick={this.hidePicker.bind(this)}>
             </span>
           </div>
-          <div className='year-checker'>
-            <span className='glyphicon glyphicon-chevron-left'
-              onClick={this.changeDate.bind(this, 0, -1)}>
-            </span>
-            <span className='year'>
-              {year}
-            </span>
-            <span className='glyphicon glyphicon-chevron-right'
-              onClick={this.changeDate.bind(this, 0, 1)}>
-            </span>
-          </div>
-        </div>
-        <div className='date-content'>
-          <table>
-            <tbody>
-              { this.setDays() }
-              { this.setDates() }
-            </tbody>
-          </table>
-        </div>
-        <div className='short-date'>
-          <h2>{today.getDate()} {this.state.months[today.getMonth()]}
-          {today.getFullYear()}</h2>
-        </div>
+        )}
       </div>
     )
   }
