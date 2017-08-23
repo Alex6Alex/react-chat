@@ -7,12 +7,25 @@ import socket from 'socket.io'
 import favicon from 'serve-favicon'
 import path from 'path'
 
+const sassMiddleware = require('node-sass-middleware')
+const srcPath = path.join(__dirname, 'sass')
+const destPath = path.join(__dirname, 'public')
+
 //app setup
 const app = express()
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
 	console.log('server listening on port', port)
-}) 
+})
+
+//for sass
+app.use(sassMiddleware({
+    src: srcPath,
+    dest: destPath,
+    debug: true,
+    outputStyle: 'compressed'
+}))
+
 //static files
 app.use(express.static('public'))
 app.use(require('./routes/index.js'))

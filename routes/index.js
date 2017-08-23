@@ -5,21 +5,19 @@ import ReactDOMServer from 'react-dom/server'
 import ReactRouter from 'react-router'
 import { Route, Switch, StaticRouter, matchPath } from 'react-router'
 
-import Chat from '../public/components/Chat'
-
 const Index = require('../public/index.js').default
 const router = Router()
 
 const routes = [
 	'/',
-	'/chat',
+	'/messages',
 	'/side'
 ]
 
 router.get('*', (req, res) => {
 
 	const match = routes.reduce((acc, route) => matchPath(req.url, {
-		path: route, 
+		path: route,
 		exact: true,
 		strict: false
 	}) || acc, null);
@@ -34,7 +32,7 @@ router.get('*', (req, res) => {
 			location={req.url}
 			context={context}
 		>
-			<Index/>
+			<Index />
 		</StaticRouter>
 	)
 
