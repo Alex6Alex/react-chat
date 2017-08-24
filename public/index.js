@@ -3,9 +3,12 @@ import React from 'react'
 import SideBar from './components/LeftBar/SideBar'
 import InfoBar from './components/RightBar/InfoBar'
 import PageContainer from './components/Content/PageContainer'
+import SignUp from './components/Auth/StartPage'
 
 export default class Index extends React.Component {
 	render(){
+		const auth = false
+
 		return(
 			<html>
 				<head>
@@ -21,11 +24,15 @@ export default class Index extends React.Component {
 					<link rel='stylesheet' href='./styles/style.css'/>
 				</head>
 				<body>
-					<div className='wrapper'>
-						<SideBar/>
-						<PageContainer/>
-						<InfoBar />
-					</div>
+					{ auth ? (
+						<div className='wrapper'>
+							<SideBar/>
+							<PageContainer/>
+							<InfoBar />
+						</div>
+					) : (
+						<SignUp/>
+					)}
 					<script src='./client.min.js'></script>
 				</body>
 			</html>
