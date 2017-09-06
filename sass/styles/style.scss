@@ -12,7 +12,7 @@ body{
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 1fr 6fr;
+  grid-template-rows: auto;
 
   .greeting {
     grid-row: 1 / 2;
@@ -24,9 +24,14 @@ body{
 
     .greeting-text {
       grid-row: 1 / 2;
+
+      color: #fff;
     }
     .note {
       grid-row: 2 / 3;
+
+      font-size: 1.3em;
+      color: #fff;
     }
   }
 
@@ -50,15 +55,79 @@ body{
       .sign-in-block {
         grid-column: 1 / 2;
 
+        display: grid;
+        justify-items: center;
+        align-items: center;
+
+        padding: 0 50px;
+
         height: 450px;
         background: rgba(255, 255, 255, 0.90);
+
+        .sign-in-block-main {
+          display: grid;
+          grid-template-rows: auto auto;
+          grid-row-gap: 10px;
+
+          color: #696969;
+
+          form {
+            display: grid;
+            grid-template-rows: auto auto auto;
+            grid-row-gap: 15px;
+
+            justify-items: stretch;
+
+            input, .sign-in {
+              background: transparent;
+              font-size: 1.1em;
+              padding: 10px 20px;
+              border-radius: 30px;
+              border: 1px solid;
+              &.sign-in {
+                background: linear-gradient(to right, #fe837c, #684d78);
+                border: 1px solid #fff;
+                color: #fff;
+              }
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
       }
 
       .sign-up-block {
         grid-column: 2 / 3;
 
+        display: grid;
+        justify-items: center;
+        align-items: center;
+
+        padding: 0 50px;
+
         height: 400px;
         background: rgba(79, 95, 144, 0.90);
+
+        .sign-up-block-main {
+          display: grid;
+          grid-template-rows: auto auto auto;
+          grid-row-gap: 10px;
+
+          color: white;
+
+          .to-sign-up {
+            justify-self: start;
+            background: transparent;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
       }
     }
   }
