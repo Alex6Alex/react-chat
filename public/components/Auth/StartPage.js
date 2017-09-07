@@ -8,9 +8,7 @@ export default class StartPage extends React.Component {
       <div className='start-page'>
         <div className='auth'>
           <div className='auth-block'>
-            <div className='sign-in-block'>
-              <SignIn/>
-            </div>
+            <SignIn/>
             <div className='sign-up-block'>
               <div className='sign-up-block-main'>
                 <h1>Регистрация</h1>
