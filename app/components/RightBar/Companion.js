@@ -5,7 +5,7 @@ export default class Companion extends React.Component {
     return(
       <div className='companion'>
         <h2>Собеседник</h2>
-        <img src='../../images/no-photo.jpg' className='companion-avatar'/>
+        <img src='../../../public/images/no-photo.jpg' className='companion-avatar'/>
         <div className='companion-info'>
           <p className='companion-name'>Example Name</p>
           <div className='companion-email'>

@@ -21,11 +21,16 @@ export default class SideBar extends React.Component{
 				<div className='side-bar-content'>
 					<h2 id='menu'>Меню</h2>
 					<ul className='list'>
-						<Link to='/'><li><img className='link-img home' src='../../images/home.png'/>
+						<Link to='/'><li><img className='link-img home'
+							src='../../../public/images/home.png'/>
 						<p id='to_acc'>Аккаунт</p></li></Link>
-						<Link to='/messages'><li><img className='link-img comment' src='../../images/chat.png'/>
+
+						<Link to='/messages'><li><img className='link-img comment'
+							src='../../../public/images/chat.png'/>
 						<p id='to_chat'>Сообщения</p></li></Link>
-						<Link to='/side'><li><img className='link-img cog' src='../../images/cogs.png'/>
+
+						<Link to='/side'><li><img className='link-img cog'
+							src='../../../public/images/cogs.png'/>
 						<p id='to_params'>Настройки</p></li></Link>
 					</ul>
 				</div>

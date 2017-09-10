@@ -5,7 +5,7 @@ export default class Profile extends React.Component {
     return(
       <div className='profile'>
         <div className='user-information'>
-          <img className='user-avatar' src='../../images/no-photo.jpg'/>
+          <img className='user-avatar' src='../../../public/images/no-photo.jpg'/>
           <div className='info'>
             <h2 className='user-name'>Example username</h2>
             <div className='email'>
@@ -70,7 +70,7 @@ export default class Profile extends React.Component {
           <div className='current-companions'>
             <h2>Список контактов</h2>
             <div className='contact'>
-              <img className='contact-photo' src='../../images/no-photo.jpg'/>
+              <img className='contact-photo' src='../../../public/images/no-photo.jpg'/>
               <p className='contact-name'>Contact Name</p>
               <div className='contact-info'>
 

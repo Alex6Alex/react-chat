@@ -2,11 +2,10 @@
 import Router from 'express'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import ReactRouter from 'react-router'
-import { Route, Switch, StaticRouter, matchPath } from 'react-router'
+import { StaticRouter, matchPath } from 'react-router'
 
-const Index = require('../public/index.js').default
-const router = Router()
+const Index = require('../public/index.js').default;
+const router = Router();
 
 const routes = [
 	'/',
@@ -26,7 +25,7 @@ router.get('*', (req, res) => {
         return;
     }
 
-	const context = {}
+	const context = {};
 	const html = ReactDOMServer.renderToString(
 		<StaticRouter
 			location={req.url}
@@ -34,17 +33,17 @@ router.get('*', (req, res) => {
 		>
 			<Index />
 		</StaticRouter>
-	)
+	);
 
 	if(context.url){
 		res.writeHead(301, {
 			Location: context.url
-		})
-		res.end()
+		});
+		res.end();
 	} else {
-		res.write(html)
-		res.end()
+		res.write(html);
+		res.end();
 	}
-})
+});
 
-module.exports = router
+export default router;
