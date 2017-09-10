@@ -11,121 +11,104 @@ body{
   background-size: cover;
 
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-columns: 10% auto 10%;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "left top right"
+    "left center rigth"
+    "left bottom rigth";
+  justify-items: center;
+  align-items: center;
 
-  .greeting {
-    grid-row: 1 / 2;
-
+  .auth-block {
+    grid-area: center;
     display: grid;
-    grid-template-rows: auto auto;
-    justify-items: center;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
 
-    .greeting-text {
-      grid-row: 1 / 2;
-
-      color: #fff;
-    }
-    .note {
-      grid-row: 2 / 3;
-
-      font-size: 1.3em;
-      color: #fff;
-    }
-  }
-
-  .auth {
-    grid-row: 2 / 3;
-
-    display: grid;
-    grid-row: auto;
-    grid-column: auto;
-    justify-items: center;
-    align-items: center;
-
-    .auth-block {
-      width: 1100px;
-      height: 450px;
+    .sign-in-block {
+      grid-column: 1 / 2;
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 50px auto 50px;
+      grid-template-rows: 50px auto 50px;
+      grid-template-areas:
+        "left-top top right-top"
+        "left center rigth"
+        "left-bottom bottom right-bottom";
+      justify-items: center;
       align-items: center;
 
-      .sign-in-block {
-        grid-column: 1 / 2;
+      background: rgba(255, 255, 255, 0.90);
+
+      .sign-in-block-main {
+        grid-area: center;
 
         display: grid;
-        justify-items: center;
-        align-items: center;
+        grid-template-rows: auto auto;
+        grid-row-gap: 10px;
 
-        padding: 0 50px;
+        color: #696969;
 
-        height: 450px;
-        background: rgba(255, 255, 255, 0.90);
-
-        .sign-in-block-main {
-          display: grid;
-          grid-template-rows: auto auto;
-          grid-row-gap: 10px;
-
-          color: #696969;
-
-          form {
-            display: grid;
-            grid-template-rows: auto auto auto;
-            grid-row-gap: 15px;
-
-            justify-items: stretch;
-
-            input, .sign-in {
-              background: transparent;
-              font-size: 1.1em;
-              padding: 10px 20px;
-              border-radius: 30px;
-              border: 1px solid;
-              &.sign-in {
-                background: linear-gradient(to right, #fe837c, #684d78);
-                border: 1px solid #fff;
-                color: #fff;
-              }
-              &:focus {
-                outline: none;
-              }
-            }
-          }
-        }
-      }
-
-      .sign-up-block {
-        grid-column: 2 / 3;
-
-        display: grid;
-        justify-items: center;
-        align-items: center;
-
-        padding: 0 50px;
-
-        height: 400px;
-        background: rgba(79, 95, 144, 0.90);
-
-        .sign-up-block-main {
+        form {
           display: grid;
           grid-template-rows: auto auto auto;
-          grid-row-gap: 10px;
+          grid-row-gap: 15px;
 
-          color: white;
+          justify-items: stretch;
 
-          .to-sign-up {
-            justify-self: start;
+          input, .sign-in {
             background: transparent;
             font-size: 1.1em;
             padding: 10px 20px;
             border-radius: 30px;
             border: 1px solid;
+            &.sign-in {
+              background: linear-gradient(to right, #fe837c, #684d78);
+              border: 1px solid #fff;
+              color: #fff;
+            }
             &:focus {
               outline: none;
             }
+          }
+        }
+      }
+    }
+
+    .sign-up-block {
+      grid-column: 2 / 3;
+
+      display: grid;
+      grid-template-columns: 50px auto 50px;
+      grid-template-rows: 50px auto 50px;
+      grid-template-areas:
+        "left-top top right-top"
+        "left center rigth"
+        "left-bottom bottom right-bottom";
+      justify-items: center;
+      align-items: center;
+
+      background: rgba(79, 95, 144, 0.90);
+
+      .sign-up-block-main {
+        grid-area: center;
+
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-row-gap: 10px;
+
+        color: white;
+
+        .to-sign-up {
+          justify-self: start;
+          background: transparent;
+          font-size: 1.1em;
+          padding: 10px 20px;
+          border-radius: 30px;
+          border: 1px solid;
+          &:focus {
+            outline: none;
           }
         }
       }
@@ -460,7 +443,7 @@ body{
 
       h4{
         color: white;
-        margin: 0, 0, 0, 0;
+        margin: 0 0 0 0;
         @media screen and (max-width: 700px){
           display: none;
         }
@@ -677,11 +660,11 @@ h2 {
           border: 7px solid transparent;
           &.right {
             border-right: 7px solid white;
-            top: 17;
+            top: 17px;
           }
           &.left {
             border-left: 7px solid #E6E6FA;
-            top: 17;
+            top: 17px;
           }
           position: relative;
         }
@@ -709,7 +692,7 @@ h2 {
     .feedback {
       p {
         color: #aaa;
-        padding: 14px 0px;
+        padding: 14px 0;
         margin: 0 20px;
       }
     }
@@ -717,7 +700,7 @@ h2 {
 
   .typing-field {
     flex: 0 0 auto;
-    padding: 15px 0px 15px 20px;
+    padding: 15px 0 15px 20px;
     background-color: white;
     border-top: 1px solid #C0C0C0;
 

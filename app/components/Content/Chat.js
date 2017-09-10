@@ -4,29 +4,29 @@ import autosize from 'autosize'
 
 export default class Chat extends React.Component{
 	constructor(){
-		super()
-		this.state = { messages: [], feedback: '', name: '' }
-		this.name = ''
+		super();
+		this.state = { messages: [], feedback: '', name: '' };
+		this.name = '';
 
 		this.timeout = 0
 	}
 
 	//listen events
 	componentDidMount() {
-		const name = window.prompt('Введите имя')
-		this.typing = false
+		const name = window.prompt('Введите имя');
+		this.typing = false;
 
-		this.setState({name: name})
-		autosize(document.querySelector('textarea'))
+		this.setState({name: name});
+		autosize(document.querySelector('textarea'));
 
-		this.socket = io('/')
+		this.socket = io('/');
 
 		this.socket.on('chat', (message) => {
 			this.setState({ messages: [
 				...this.state.messages,
 				message
 			]})
-		})
+		});
 
 		this.socket.on('typing', (data) => {
 			if(data !== false){
@@ -42,51 +42,51 @@ export default class Chat extends React.Component{
 	}
 
 	timeoutFunction(){
-		this.typing = false
+		this.typing = false;
 		this.socket.emit('typing', false)
 	}
 
 	//emit events
 	sendClick(){
-		const handle = this.state.name
-		const text = document.getElementById('message').value.trim()
-		const time = new Date(Date.now())
+		const handle = this.state.name;
+		const text = document.getElementById('message').value.trim();
+		const time = new Date(Date.now());
 
 		if(handle && text){
 			const message = {
 				text,
 				handle,
 				time: time.toLocaleTimeString('ru-RU')
-			}
-			this.socket.emit('chat', message)
+			};
+			this.socket.emit('chat', message);
 			document.getElementById('message').value = ''
 		}
 	}
 
 	keyPressed(e) {
-		const handle = this.state.name
-		const text = e.target.value.trim()
-		const time = new Date(Date.now())
-		time.toLocaleTimeString('ru-RU')
+		const handle = this.state.name;
+		const text = e.target.value.trim();
+		const time = new Date(Date.now());
+		time.toLocaleTimeString('ru-RU');
 
 		if (e.charCode === 13 && handle && text){
-			e.preventDefault()
+			e.preventDefault();
 
 			const message = {
 				text,
 				handle,
 				time: time.toLocaleTimeString('ru-RU')
-			}
-			this.socket.emit('chat', message)
-			e.target.value = ''
+			};
+			this.socket.emit('chat', message);
+			e.target.value = '';
 			return false
 		}
 
 		if(this.typing === false){
-			this.typing = true
+			this.typing = true;
 			this.socket.emit('typing', handle)
 		} else {
-			clearTimeout(this.timeout)
+			clearTimeout(this.timeout);
 			this.timeout = setTimeout(this.timeoutFunction, 2000)
 		}
 	}
@@ -96,12 +96,12 @@ export default class Chat extends React.Component{
 
 		const messages = this.state.messages.map((message, index) => {
 			const whoseMessage = message.handle === this.state.name ?
-				'your message-block' : 'companion message-block'
+				'your message-block' : 'companion message-block';
 
 			return(
 				<div className={whoseMessage} key={index}>
 					<div className='message-info'>
-						<img className='avatar' src='../../images/no-photo.jpg'/>
+						<img className='avatar' src='../../../public/images/no-photo.jpg'/>
 						<p className='time'>{message.time}</p>
 					</div>
 					{ message.handle === this.state.name ? (
@@ -120,7 +120,7 @@ export default class Chat extends React.Component{
 					) }
 				</div>
 			)
-		})
+		});
 
 		return(
 			<div id='mario-chat' className='chat'>
@@ -135,8 +135,8 @@ export default class Chat extends React.Component{
 					<textarea rows='1' id='message' className='message-input'
 						placeholder='Ваше cообщение' onKeyPress={this.keyPressed.bind(this)}>
 					</textarea>
-					<img src='../../images/send.png' id='send' className='send-btn'
-						onClick={this.sendClick.bind(this)}/>
+					<img src='../../../public/images/send.png' id='send' className='send-btn'
+                         onClick={this.sendClick.bind(this)}/>
 				</div>
 			</div>
 		)

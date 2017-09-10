@@ -1,32 +1,28 @@
 import React from 'react'
+import { months } from './months'
 
 export default class DatePicker extends React.Component {
   constructor(props){
-    super(props)
-    let date = new Date()
-    let months = [
-      'Январь', 'Февраль', 'Март', 'Апрель',
-      'Май', 'Июнь', 'Июль', 'Август',
-      'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
-    ]
+    super(props);
+    let date = new Date();
 
     this.state = {
       date,
-      months,
+      months: months,
       active: true,
       options: { year: '2-digit', month: 'long', day: 'numeric' }
     }
   }
 
   changeDate(month, year){
-    let date = this.state.date
-    date.setMonth(date.getMonth() + month)
-    date.setFullYear(date.getFullYear() + year)
+    let date = this.state.date;
+    date.setMonth(date.getMonth() + month);
+    date.setFullYear(date.getFullYear() + year);
     this.setState({ date: date })
   }
 
   setDays(){
-    const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+    const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
     return(
       <tr>
         {days.map((day, i) => {
@@ -37,11 +33,11 @@ export default class DatePicker extends React.Component {
   }
 
   setDates(){
-    let tableRow = []
-    const table = []
-    const today = new Date().setHours(0, 0, 0, 0)
+    let tableRow = [];
+    const table = [];
+    const today = new Date().setHours(0, 0, 0, 0);
     let currentDay = new Date(`${this.state.date.getMonth() + 1}
-                              .01.${this.state.date.getFullYear()}`)
+                              .01.${this.state.date.getFullYear()}`);
 
     while (currentDay.getDay() !== 1) {
       currentDay.setDate(currentDay.getDate() - 1)
@@ -49,7 +45,7 @@ export default class DatePicker extends React.Component {
 
     for (let i = 0; i < 6; i++) {
       for (let j = 0; j < 7; j++) {
-        let day = `day${j}`
+        let day = `day${j}`;
 
         if (currentDay.getTime() === today){
           day = 'today'
@@ -59,7 +55,7 @@ export default class DatePicker extends React.Component {
           <td className={day} key={j}>
             {currentDay.getDate()}
           </td>
-        )
+        );
 
         currentDay.setDate(currentDay.getDate() + 1)
       }
@@ -68,7 +64,7 @@ export default class DatePicker extends React.Component {
         <tr className='dates' key={i}>
           {tableRow}
         </tr>
-      )
+      );
 
       tableRow = []
     }
@@ -77,14 +73,14 @@ export default class DatePicker extends React.Component {
   }
 
   hidePicker(){
-    const _active = this.state.active
+    const _active = this.state.active;
     this.setState({active: !_active})
   }
 
   render(){
-    const month = this.state.months[this.state.date.getMonth()]
-    const year = this.state.date.getFullYear()
-    const today = new Date()
+    const month = this.state.months[this.state.date.getMonth()];
+    const year = this.state.date.getFullYear();
+    const today = new Date();
 
     return(
       <div className='date-wrapper'>

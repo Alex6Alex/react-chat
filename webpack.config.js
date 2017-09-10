@@ -1,11 +1,11 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
+const debug = process.env.NODE_ENV !== 'production';
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  context: path.join(__dirname, "public"),
-  devtool: debug ? "inline-sourcemap" : false,
-  entry: "./client.js",
+  context: path.join(__dirname, 'app'),
+  devtool: debug ? 'inline-sourcemap' : false,
+  entry: './client.js',
   module: {
     rules: [
       {
@@ -26,8 +26,8 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, "public"),
-    filename: "./client.min.js"
+    path: path.join(__dirname, 'public'),
+    filename: './client.min.js'
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
