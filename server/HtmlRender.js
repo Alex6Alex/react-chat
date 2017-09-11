@@ -5,16 +5,13 @@ import { StaticRouter } from 'react-router'
 import Index from '../public/index'
 
 export default class HtmlRender {
-    constructor(req, context) {
-        this.req = req;
-        this.context = context;
-    }
+    constructor() {}
 
-    renderHtml() {
+    static renderHtml(req, context) {
         return ReactDOMServer.renderToString(
             <StaticRouter
-                location={this.req.url}
-                context={this.context}
+                location={req.url}
+                context={context}
             >
                 <Index />
             </StaticRouter>

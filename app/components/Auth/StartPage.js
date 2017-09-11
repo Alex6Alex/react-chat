@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SignIn from './SignIn'
-import SignUp from './SignUp'
+import ToSignUp from './ToSignUp'
 
 export default class StartPage extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class StartPage extends React.Component {
       <div className='start-page'>
         <div className='auth-block'>
           <SignIn/>
-          <SignUp/>
+          <ToSignUp/>
         </div>
       </div>
     )

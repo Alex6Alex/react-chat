@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import Profile from './Profile'
 import Chat from './Chat'
@@ -12,8 +12,10 @@ export default class PageContainer extends React.Component {
           <input className='search' type='text' placeholder='Поиск'/>
         </div>
         <div className='page-container-content'>
-          <Route exact path='/' component={Profile}/>
-          <Route path='/messages' component={Chat}/>
+          <Switch>
+            <Route exact path='/' component={Profile}/>
+            <Route exact path='/messages' component={Chat}/>
+          </Switch>
         </div>
       </div>
     )

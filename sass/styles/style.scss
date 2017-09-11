@@ -76,7 +76,7 @@ body{
       }
     }
 
-    .sign-up-block {
+    .to-sign-up-block {
       grid-column: 2 / 3;
 
       display: grid;
@@ -91,7 +91,7 @@ body{
 
       background: rgba(79, 95, 144, 0.90);
 
-      .sign-up-block-main {
+      .to-sign-up-block-main {
         grid-area: center;
 
         display: grid;
@@ -100,15 +100,19 @@ body{
 
         color: white;
 
-        .to-sign-up {
-          justify-self: start;
-          background: transparent;
-          font-size: 1.1em;
-          padding: 10px 20px;
-          border-radius: 30px;
-          border: 1px solid;
-          &:focus {
-            outline: none;
+        .link-to-sign-up {
+          color: white;
+
+          .go-to-sign-up {
+            justify-self: start;
+            background: transparent;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid;
+            &:focus {
+              outline: none;
+            }
           }
         }
       }

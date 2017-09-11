@@ -1,9 +1,9 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import SideBar from '../app/components/LeftBar/SideBar'
-import InfoBar from '../app/components/RightBar/InfoBar'
-import PageContainer from '../app/components/Content/PageContainer'
-import SignUp from '../app/components/Auth/StartPage'
+import Wrapper from '../app/components/Wrapper/Wrapper'
+import StartPage from '../app/components/Auth/StartPage'
+import SignUp from '../app/components/Auth/SignUp'
 
 export default class Index extends React.Component {
 	render(){
@@ -24,15 +24,15 @@ export default class Index extends React.Component {
 					<link rel='stylesheet' href='styles/style.css'/>
 				</head>
 				<body>
-					{ auth ? (
-						<div className='wrapper'>
-							<SideBar/>
-							<PageContainer/>
-							<InfoBar />
-						</div>
-					) : (
-						<SignUp/>
-					)}
+					<Switch>
+						{ auth ?
+							<Route path='/' component={Wrapper}/> :
+							<Switch>
+								<Route exact path='/start' component={StartPage}/>
+								<Route exact path='/signup' component={SignUp}/>
+							</Switch>
+						}
+					</Switch>
 					<script src='client.min.js'></script>
 				</body>
 			</html>
