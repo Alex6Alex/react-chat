@@ -13,7 +13,7 @@ export default class PageContainer extends React.Component {
         </div>
         <div className='page-container-content'>
           <Switch>
-            <Route exact path='/' component={Profile}/>
+            <Route exact path='/profile' component={Profile}/>
             <Route exact path='/messages' component={Chat}/>
           </Switch>
         </div>

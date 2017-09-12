@@ -32,12 +32,6 @@ app.use(express.static('public'));
 app.use(router);
 //favicon
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//404 error
-app.use((req, res) => {
-	res.status(404);
-
-	res.send('404')
-})
 
 //socket
 const io = socket(server);

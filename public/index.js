@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Redirect, Switch, Route } from 'react-router-dom'
 
 import Wrapper from '../app/components/Wrapper/Wrapper'
 import StartPage from '../app/components/Auth/StartPage'
@@ -7,9 +7,23 @@ import SignUp from '../app/components/Auth/SignUp'
 
 export default class Index extends React.Component {
 	render(){
-		const auth = false;
+        const Status = ({ code, children }) => (
+			<Route render={({ staticContext }) => {
+                if (staticContext)
+                    staticContext.status = code;
+                return children
+            }}/>
+        );
 
-		return(
+        const NotFound = () => (
+			<Status code={404}>
+				<div>
+					<h1>Sorry, can’t find that.</h1>
+				</div>
+			</Status>
+        );
+
+        return(
 			<html>
 				<head>
 					<meta charSet='utf-8'/>
@@ -25,13 +39,11 @@ export default class Index extends React.Component {
 				</head>
 				<body>
 					<Switch>
-						{ auth ?
-							<Route path='/' component={Wrapper}/> :
-							<Switch>
-								<Route exact path='/start' component={StartPage}/>
-								<Route exact path='/signup' component={SignUp}/>
-							</Switch>
-						}
+						<Route exact path='/' render={() => <Redirect to='profile'/>}/>
+						<Route exact path='/(profile|messages)/' component={Wrapper}/>
+						<Route exact path='/start' component={StartPage}/>
+						<Route exact path='/signup' component={SignUp}/>
+						<Route component={NotFound}/>
 					</Switch>
 					<script src='client.min.js'></script>
 				</body>

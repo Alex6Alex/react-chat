@@ -1,47 +1,19 @@
-import HtmlRender from '../HtmlRender'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from 'react-router'
 
-export const home = (req, res) => {
-    const auth = false;
+import Index from '../../public/index'
 
-    if (!auth) {
-        res.redirect('/start')
-    } else {
-        const context = {};
-
-        if(context.url){
-            res.writeHead(301, {
-                Location: context.url
-            });
-            res.end();
-        } else {
-            res.write(HtmlRender.renderHtml(req, context));
-            res.end();
-        }
-    }
-};
-
-export const messages = (req, res) => {
-    const auth = false;
-
-    if (!auth) {
-        res.redirect('/start')
-    } else {
-        const context = {};
-
-        if(context.url){
-            res.writeHead(301, {
-                Location: context.url
-            });
-            res.end();
-        } else {
-            res.write(HtmlRender.renderHtml(req, context));
-            res.end();
-        }
-    }
-};
-
-export const auth = (req, res) => {
+export const path = (req, res) => {
     const context = {};
+    const html = ReactDOMServer.renderToString(
+        <StaticRouter
+            location={req.url}
+            context={context}
+        >
+            <Index />
+        </StaticRouter>
+    );
 
     if(context.url){
         res.writeHead(301, {
@@ -49,21 +21,7 @@ export const auth = (req, res) => {
         });
         res.end();
     } else {
-        res.write(HtmlRender.renderHtml(req, context));
-        res.end();
-    }
-};
-
-export const sign_up = (req, res) => {
-    const context = {};
-
-    if(context.url){
-        res.writeHead(301, {
-            Location: context.url
-        });
-        res.end();
-    } else {
-        res.write(HtmlRender.renderHtml(req, context));
+        res.write(html);
         res.end();
     }
 };
